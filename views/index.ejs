@@ -6,17 +6,23 @@
   <title>Home Page</title>
 </head>
 <body>
+  <%- include('partial/_nav.ejs') %>
   <% if (user) { %>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
+    <h1>Welcome back to the Babylon Books, <%= user.username %> we missed you!</h1>
+
+      <a href="/users/<%= user._id %>/books">Browse Libraries</a> ,
+      <a href="/users/<% user._id %>/new">Add Book</a>, or 
+      Continue where you left off: <a href="/books/<%= user.currentBookId %>">Last Active Book</a>
     </p>
+  
   <% } else { %>
-    <h1>Welcome to the app, guest.</h1>
-    <p>
+    <h1>Welcome to Babylon Books, guest!</h1>
+    <h3>
+      We see this is your first time here,
       <a href="/auth/sign-up">Sign up</a> or
       <a href="/auth/sign-in">Sign in</a>.
-    </p>
+      to access your library and personalized features!
+    </h3>
   <% } %>
 
 </body>

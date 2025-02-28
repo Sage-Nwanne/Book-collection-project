@@ -36,7 +36,11 @@ router.post('/sign-up', async (req, res) => {
     req.body.password = hashedPassword;
   
     // All ready to create the new user!
-    await User.create(req.body);
+
+    await User.create({
+      username: req.body.username,
+      password: hashedPassword
+    });
   
     res.redirect('/auth/sign-in');
   } catch (error) {
@@ -59,7 +63,7 @@ router.post('/sign-in', async (req, res) => {
       userInDatabase.password
     );
     if (!validPassword) {
-      return res.send('Login failed. Please try again.');
+      return res.send('Login failed. Incorrect password, please try again.');
     }
   
     // There is a user AND they had the correct password. Time to make a session!

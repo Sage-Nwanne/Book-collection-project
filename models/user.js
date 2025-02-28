@@ -11,6 +11,15 @@ const librarySchema = mongoose.Schema({
     required: true,
   },
 
+  author: {
+    type: String,
+    required: true,
+  },
+
+  type: {
+    enum: ['Hardcover', 'audiobook', 'ebook','other']
+  },
+
 
 
   
@@ -32,10 +41,7 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   
-  book: {
-    type: String,
-    required: true,
-  },
+  librarySchema: [librarySchema],
 
 });
 

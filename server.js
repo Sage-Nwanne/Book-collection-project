@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 
 const authController = require('./controllers/auth.js');
-
+const bookController = require('./controllers/bookController.js');
 const port = process.env.PORT ? process.env.PORT : '3100';
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/auth', authController);
-
+app.use('/books', bookController);
 
 
 app.listen(port,  () => {
