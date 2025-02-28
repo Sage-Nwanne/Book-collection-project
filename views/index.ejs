@@ -10,8 +10,8 @@
   <% if (user) { %>
     <h1>Welcome back to the Babylon Books, <%= user.username %> we missed you!</h1>
 
-      <a href="/users/<%= user._id %>/books">Browse Libraries</a> ,
-      <a href="/users/<% user._id %>/new">Add Book</a>, or 
+      <a href="/users/<%= user._id %>/libraries">Browse Libraries</a> ,
+      <a href="/users/<%= user._id %>/books/new">Add Book</a>, or 
       Continue where you left off: <a href="/books/<%= user.currentBookId %>">Last Active Book</a>
     </p>
   

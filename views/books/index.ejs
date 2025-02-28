@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+</head>
+<body>
+    <h1>My Library</h1>
+
+    <% if (books.length > 0) { %>
+        <ul>
+            <% books.forEach(book => { %>
+                <li>
+                    <strong>Title:</strong> <%= book.title %> <br>
+                    <strong>Author:</strong> <%= book.author %> <br>
+                    <strong>Type:</strong> <%= book.type %>
+                </li>
+                <hr>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No books in your library... yet <a href="/users/<%= user._id %>/books/new">Add a Book</a></p>
+    <% } %>
+
+</body>
+</html>

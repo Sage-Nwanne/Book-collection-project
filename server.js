@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/auth', authController);
-app.use('/books', bookController);
+app.use('/users/:userId/books', bookController);
 
 
 app.listen(port,  () => {

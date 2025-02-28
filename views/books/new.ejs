@@ -6,9 +6,10 @@
     <title>Add Book</title>
 </head>
 <body>
-    <%- include('partial/_nav.ejs') %>
+    <%- include('../partial/_nav.ejs') %>
     <h1>Add a New Book</h1>
-    <form action="/users/<%= user._id %>/books" method="POST">
+    <!-- Currently isnt posting correctly -->
+    <form action="/users/<%= user._id %>/books/new" method="POST">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
         <br>
@@ -20,15 +21,13 @@
             <option value="fiction">Hardcover</option>
             <option value="non-fiction">Audiobook</option>
             <option value="mystery">Ebook</option>
-            <option value="fantasy">Other</option>
-        <br>
-        <button type="submit">Add Book</button>
+            <option value="fantasy">Other</option></select>
+            <br><br>
+        <button type="submit">Add Book</button> 
     </form>
+    <br>
 
-
-      <a href="/users/<%= user._id %>/books">Back to Library</a> 
+      <a href="/users/<%= user._id %>/books/">Back to Library</a> 
       <a href="/">Back to Home</a> 
-
-    
 </body>
 </html>
