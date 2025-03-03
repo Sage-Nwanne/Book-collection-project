@@ -13,11 +13,24 @@ const port = process.env.PORT ? process.env.PORT : '3100';
 
 const path = require('path');
 
+//middleware: redirect logged in users away from auth pages
+
+const redirectIfLoggedIn = (req, res, next) => {
+  if (req.session.user) {
+    return res.redirect(`/users/${req.session.user._id}/books`);
+  }
+  next();
+};
+
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
+
+app.use('/auth/sign-up', redirectIfLoggedIn);
+app.use('/auth/sign-in', redirectIfLoggedIn);
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
