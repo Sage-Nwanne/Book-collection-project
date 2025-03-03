@@ -14,6 +14,9 @@ const port = process.env.PORT ? process.env.PORT : '3100';
 const path = require('path');
 
 //middleware: redirect logged in users away from auth pages
+// require our new middleware!
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 
 const redirectIfLoggedIn = (req, res, next) => {
   if (req.session.user) {
@@ -46,6 +49,10 @@ app.use(
   })
 );
 
+app.use(passUserToView); // use new passUserToView middleware here
+
+
+
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
@@ -55,6 +62,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/auth', authController);
+app.use(isSignedIn);
 app.use('/users/:userId/books', bookController);
 
 
