@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
-
-    <title><%= book.title %></title>
+    <title>Active Book</title>
 </head>
 <body>
+    <h1> This feature coming soon...   </h1>
     <%- include('../partial/_nav.ejs') %>
-    <h1><%= book.title %></h1>
+    <h1>Active Book</h1>
+    <p><strong>Title:</strong> <%= book.title %></p>
     <p><strong>Author:</strong> <%= book.author %></p>
     <p><strong>Type:</strong> <%= book.type %></p>
     <a href="/users/<%= user._id %>/books/<%= book._id %>/edit">Edit Book</a>
@@ -21,6 +21,5 @@
 
       <a href="/users/<%= user._id %>/books/">Back to Library</a>  
       <a href="/">Back to Home</a>
-    
 </body>
 </html>

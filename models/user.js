@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const librarySchema = mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-  },
-
   title: {
     type: String,
     required: true,
@@ -17,16 +12,9 @@ const librarySchema = mongoose.Schema({
   },
 
   type: {
+    type: String,
     enum: ['Hardcover', 'audiobook', 'ebook','other']
   },
-
-
-
-  
-
-
-
-
 });
 
 

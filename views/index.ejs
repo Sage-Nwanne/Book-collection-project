@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/style.css">
+
+
   <title>Home Page</title>
 </head>
 <body>
   <%- include('partial/_nav.ejs') %>
   <% if (user) { %>
-    <h1>Welcome back to the Babylon Books, <%= user.username %> we missed you!</h1>
+    <h1>Welcome back to the Babylon Books, <%= user.username %> <br> we missed you!</h1>
 
-      <a href="/users/<%= user._id %>/libraries">Browse Libraries</a> ,
+      <a href="/users/<%= user._id %>/books/libraries">Browse Libraries</a> ,
       <a href="/users/<%= user._id %>/books/new">Add Book</a>, or 
-      Continue where you left off: <a href="/books/<%= user.currentBookId %>">Last Active Book</a>
+      Continue where you left off: <a href="/users/<%= user._id %>/books/active">Last Active Book</a>
     </p>
   
   <% } else { %>

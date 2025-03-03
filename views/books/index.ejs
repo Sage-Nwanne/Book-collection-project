@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+
     <title>My Library</title>
 </head>
 <body>
-    <h1>My Library</h1>
+    <h1><span class="book-icon">📖</span> My Library</h1>
 
     <% if (books.length > 0) { %>
         <ul>
             <% books.forEach(book => { %>
                 <li>
-                    <strong>Title:</strong> <%= book.title %> <br>
+                    <a href="/users/<%= user._id %>/books/<%= book._id %>">Title:<%= book.title%></a><br>
                     <strong>Author:</strong> <%= book.author %> <br>
                     <strong>Type:</strong> <%= book.type %>
+                    <a href="/users/<%= user._id %>/books/<%= book._id %>/edit">Edit Book</a>
+                    <form action="/users/<%= user._id %>/books/<%= book._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
                 </li>
-                <hr>
             <% }) %>
         </ul>
+        <a href="/users/<%= user._id %>/books/new">Add a Book</a> <a href="/">Back to Home</a>
     <% } else { %>
         <p>No books in your library... yet <a href="/users/<%= user._id %>/books/new">Add a Book</a></p>
     <% } %>

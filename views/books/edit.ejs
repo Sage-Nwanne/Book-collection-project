@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <title>Edit Book</title>
+</head>
+<body>
+    <%- include('../partial/_nav.ejs') %>
+    <h1>Edit <%=book.title%></h1>
+    <form action="/users/<%= user._id %>/books/<%= book._id %>?_method=PUT" method="POST">
+        <label for="name"><Title></Title>Title:</label>
+        <input type="text" name="name" id="name" value="<%= book.title %>" required>
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" value="<%= book.author %>" required>
+        <br>
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+          <option
+            value="Hardcover"
+            <%= book.type === "Hardcover" ? "selected" : "" %>
+          >
+            Hardcover
+          </option>
+          <option
+            value="audiobook"
+            <%= book.type === "Audiobook" ? "selected" : "" %>
+          >
+            Audiobook
+          </option>
+          <option
+            value="ebook"
+            <%= book.type === "Ebook" ? "selected" : "" %>
+          >
+            Ebook
+          </option>
+          <option
+            value="other"
+            <%= book.type === "other" ? "selected" : "" %>
+          >
+            Other
+          </option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+    
+    <br>
+
+      <a href="/users/<%= user._id %>/books/">Back to Library</a> 
+      <a href="/">Back to Home</a> 
+</body>
+</html>
